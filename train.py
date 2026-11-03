@@ -3,7 +3,7 @@ import argparse
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-DEFAULT_MODEL = ROOT / "ultralytics/cfg/models/ablation/DKCSPELAN_LCGAConvGLU_SpatialSepC3.yaml"
+DEFAULT_MODEL = ROOT / "ultralytics/cfg/models/ablation/WCSPELAN_LCGAConvGLU_SpatialSepC3.yaml"
 
 
 def build_parser():

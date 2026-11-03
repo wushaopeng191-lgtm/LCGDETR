@@ -6,8 +6,8 @@ from ultralytics.utils.torch_utils import model_info
 
 if __name__ == '__main__':
     flops_dict = {}
-    yaml_base_path = 'ultralytics/cfg/models/rt-detr'
-    for yaml_path in tqdm.tqdm(glob.glob(f'{yaml_base_path}/*.yaml')):
+    yaml_base_path = 'ultralytics/cfg/models'
+    for yaml_path in tqdm.tqdm(glob.glob(f'{yaml_base_path}/**/*.yaml', recursive=True)):
         if 'DCN' in yaml_path:
             continue
         try:

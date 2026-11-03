@@ -2,7 +2,7 @@
 
 ## Supported setup
 
-Use Python 3.10 on Linux, or Linux under WSL2, with an NVIDIA GPU and a CUDA-compatible driver. The release was checked in the existing experiment environment with PyTorch 2.2.2+cu121, torchvision 0.17.2+cu121, and Triton 2.2.0. Use CUDA FP32 for the supplied paper comparisons.
+Use Python 3.10 on Linux, or Linux under WSL2, with an NVIDIA GPU and a CUDA-compatible driver. The earlier source snapshot was checked in the existing experiment environment with PyTorch 2.2.2+cu121, torchvision 0.17.2+cu121, and Triton 2.2.0. Use CUDA FP32 for the supplied baseline and ablation configurations.
 
 The complete package requires a CUDA GPU even when the selected model does not use MAC. `ultralytics.nn.tasks` imports the retained custom modules, and `extra_modules/MAC.py` creates CUDA tensors during import. CPU-only and native Windows execution are not supported by this release. macOS, other GPU backends, and multi-GPU training were not validated.
 
@@ -62,7 +62,9 @@ PY
 
 If another physical GPU must be used, select it before Python starts, for example `CUDA_VISIBLE_DEVICES=1 python ...`; it will be exposed to the process as CUDA device 0. The verified checks used CUDA device 0.
 
-## Model-specific constraints
+## Retained helper and runtime constraints
+
+This release provides 10 baseline, full-detector, and ablation YAMLs. Backbone and attention comparison YAMLs have been removed, while their helper implementations and registry imports are preserved. The import-time requirements below therefore still apply.
 
 - **LSNet-T:** the spatial kernel aggregation implementation uses Triton kernels. Its broad import guards do not implement a CPU fallback. A successful Python import alone does not establish that its kernels can run. Triton 2.2.0 and CUDA FP32 were used for verification; keep the paired PyTorch version above.
 - **LSNet-T evaluation:** its attention module caches a bias tensor when evaluation mode is entered. When using the underlying PyTorch model directly, move it to the final device first and then call `eval()`, for example `model.float().to("cuda:0").eval()`. Calling `eval()` on CPU before moving to CUDA can leave the cache on CPU and cause a device mismatch. The standard `RTDETR.predict(..., device=0, half=False)` interface was also checked.
@@ -103,6 +105,6 @@ These versions were read from installed distribution metadata in the existing ex
 
 The THOP requirement uses the normalized package version `0.1.1.post2209072238`. `py-cpuinfo` and wheel are included as installation/runtime recommendations; their installed versions were not established by this metadata inspection.
 
-Before trained weights were removed from the source copy, 24 paper-related `best.pt` paths covering 18 configurations and the DUO baseline/full detector passed checkpoint loading, a 640 x 640 CUDA FP32 forward pass, and the standard `predict()` interface. Identical checkpoint contents were deduplicated by SHA256. These checks did not reinstall dependencies, retrain the models, run a new dataset-accuracy evaluation, or establish support for every device, precision, or export backend.
+Before trained weights were removed from an earlier, broader source snapshot, 24 paper-related `best.pt` paths covering 18 configurations and the DUO baseline/full detector passed checkpoint loading, a 640 x 640 CUDA FP32 forward pass, and the standard `predict()` interface. Identical checkpoint contents were deduplicated by SHA256. The current release retains 10 baseline, full-detector, and ablation configurations from that snapshot; the 8 backbone and attention comparison YAMLs have been removed. No new GPU check was performed for this configuration cleanup. The earlier checks did not reinstall dependencies, retrain the models, run a new dataset-accuracy evaluation, or establish support for every device, precision, or export backend.
 
 TensorBoard, experiment-tracking integrations, Albumentations, COCO JSON evaluation packages, and export toolchains are not needed for the documented detector commands. Install an optional package only when enabling the corresponding feature. Their installation and export compatibility were not checked as part of this release.

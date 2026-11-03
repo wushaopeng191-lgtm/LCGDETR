@@ -2,11 +2,13 @@
 
 本仓库对应论文 *LCG-DETR: Curvature-Guided Attention and Convolutional Gating for Lightweight Underwater Object Detection*，作者为吴绍鹏、王泽峰、蔡绍滨。
 
-完整安装、训练、评估、推理命令和18份模型配置见[英文 README](README.md)。
+完整安装、训练、评估、推理命令和10份模型配置见[英文 README](README.md)。
 
 ## 发布范围
 
-提供完整模型、RT-DETR-R18基线、组件对比和消融配置，以及所需框架代码。数据图像、标注、权重、热力图和运行结果不随源码发布。使用者需要自行获取数据并训练，再加载自己的best.pt评估。
+提供完整模型、RT-DETR-R18基线、整体模块消融和编码器内部消融配置，共10份YAML，以及所需框架代码。骨干网络与注意力对比YAML不再提供。数据图像、标注、权重、热力图和运行结果不随源码发布。使用者需要自行获取数据并训练，再加载自己的best.pt评估。
+
+部分旧对比辅助模块及其框架导入保留，因此CUDA、Triton等依赖和第三方来源说明仍然适用。此次仅精简实验配置，没有改变模型计算逻辑。
 
 ## 环境和数据
 
@@ -50,5 +52,5 @@ python val.py --weights runs/urpc2020/lcg-detr/weights/best.pt --data URPC2020/d
 
 见[LICENSE](LICENSE)、[第三方声明](THIRD_PARTY_NOTICES.md)和[来源说明](docs/SOURCES.md)。各上游贡献的版权与许可声明应保留。
 
-FTIC、LSNet、CMTFNet、Histoformer 的源码许可尚未查明，已在第三方声明中标出，公开分发这些对比实现前需核实。顶层许可证不替代缺失的上游授权。
+FTIC、LSNet、CMTFNet、Histoformer 的源码许可尚未查明，已在第三方声明中标出。相关旧辅助实现仍包含在源码中，公开分发前需核实。顶层许可证不替代缺失的上游授权。
 

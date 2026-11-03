@@ -9,9 +9,11 @@ AGPLv3 or later. This repository does not replace the upstream license with MIT.
 
 Third-party components retain their own applicable terms and notices. The root
 license does not supply missing permissions for a separate upstream component.
-The following inventory covers the implementations used by the retained paper
-configurations. A paper citation identifies a method; it does not itself grant
-permission to redistribute that method's source code.
+The following inventory covers retained source implementations, including legacy
+comparison helpers still imported by the framework. This release provides only
+the baseline, full-detector, and ablation YAMLs; backbone and attention comparison
+YAMLs are not included. A paper citation identifies a method; it does not itself
+grant permission to redistribute that method's source code.
 
 ## Verified upstream license statements
 
@@ -41,7 +43,8 @@ claimed as entirely original LCG-DETR implementations. See
 | CMTFNet / MSMHSA | `LayerNorm`, `MutilScal`, `Mutilscal_MHSA`, and MSMHSA encoder in `ultralytics/nn/extra_modules/transformer.py` | [DrWuHonglin/CMTFNet](https://github.com/DrWuHonglin/CMTFNet) | An official implementation was identified, but no public root license was located. A source-specific permission check remains necessary. |
 | Histoformer / DHSA | `Attention_histogram` and DHSA encoder in `ultralytics/nn/extra_modules/transformer.py` | [sunshangquan/Histoformer](https://github.com/sunshangquan/Histoformer) | The official repository and `basicsr/models/archs/histoformer_arch.py` were inspected. No public root or file-level license for this implementation was located. A model-hosting metadata label is not treated as a source-code license grant. |
 
-These entries are retained to support all paper comparisons and ablations; this
+These implementations remain in the bundled source and module imports even
+though the backbone and attention comparison YAMLs are not included. This
 document records unresolved provenance rather than silently assigning a license.
 The originating revision and any separate permission held by the authors should
 be recorded before public redistribution of those components. Public repository

@@ -4,13 +4,13 @@ Research implementation for **LCG-DETR: Curvature-Guided Attention and Convoluti
 
 **Authors:** Shaopeng Wu, Zefeng Wang, and Shaobin Cai.
 
-LCG-DETR uses WCSPELAN, LCGAConvGLU, and SpatialSepC3 within a bundled Ultralytics RT-DETR implementation. This release includes the full detector, RT-DETR-R18 baseline, and paper component-comparison and ablation configurations.
+LCG-DETR uses WCSPELAN, LCGAConvGLU, and SpatialSepC3 within a bundled Ultralytics RT-DETR implementation. This release includes 10 configurations for the full detector, RT-DETR-R18 baseline, and overall and internal ablations. Backbone and attention comparison YAMLs are not included.
 
 No dataset images, annotations, trained weights, generated figures, or historical run directories are included. Train a model locally before evaluating a checkpoint.
 
 ## Installation
 
-Use Linux or Linux under WSL2 with an NVIDIA CUDA GPU. The bundled MAC comparison module uses CUDA tensors during import; LSNet uses Triton. CPU-only execution is not supported by this release.
+Use Linux or Linux under WSL2 with an NVIDIA CUDA GPU. Legacy helper modules and registry imports are preserved: MAC creates CUDA tensors during import, and LSNet imports Triton. CPU-only execution is not supported by this release.
 
 Run from the repository root:
 
@@ -62,7 +62,7 @@ Set the paths in `URPC2020/data.yaml` and `DUO/data.yaml` to your local data. Th
 
 ## Train the full detector
 
-A single `train.py` is used for both datasets and every paper configuration. The full LCG-DETR YAML is selected by default. Models are initialized from YAML without loading pretrained weights.
+A single `train.py` is used for both datasets and every retained configuration. The full LCG-DETR YAML is selected by default. Models are initialized from YAML without loading pretrained weights.
 
 URPC2020:
 
@@ -76,7 +76,7 @@ DUO:
 python train.py --data DUO/data.yaml --project runs/duo --name lcg-detr
 ```
 
-To run a baseline, component comparison, or ablation, pass its YAML from the table below. For example, the historical URPC2020 baseline used seed 3407:
+To run the baseline or an ablation, pass its YAML from the table below. For example, the historical URPC2020 baseline used seed 3407:
 
 ```bash
 python train.py \
@@ -149,50 +149,42 @@ PY
 
 ## Paper configurations
 
-All paths are relative to `ultralytics/cfg/models/`. Component comparisons and ablations are performed on URPC2020; the baseline and full detector are also compared on DUO.
+All paths are relative to `ultralytics/cfg/models/`. The 10 retained configurations cover overall and internal ablations on URPC2020; the baseline and full detector are also evaluated on DUO.
 
 | Group | Model | YAML |
 |---|---|---|
 | Overall ablation / baseline | R18 + AIFI + RepC3 | `ablation/baseline.yaml` |
-| Overall ablation / backbone comparison | WCSPELAN + AIFI + RepC3 | `ablation/DKCSPELAN_AIFI_RepC3.yaml` |
-| Overall ablation / encoder comparison | R18 + LCGAConvGLU + RepC3 | `ablation/ResNet18_LCGAConvGLU_RepC3.yaml` |
+| Overall ablation | WCSPELAN + AIFI + RepC3 | `ablation/WCSPELAN_AIFI_RepC3.yaml` |
+| Overall ablation | R18 + LCGAConvGLU + RepC3 | `ablation/ResNet18_LCGAConvGLU_RepC3.yaml` |
 | Overall ablation | R18 + AIFI + SpatialSepC3 | `ablation/ResNet18_AIFI_SpatialSepC3.yaml` |
-| Overall ablation | WCSPELAN + LCGAConvGLU + RepC3 | `ablation/DKCSPELAN_LCGAConvGLU_RepC3.yaml` |
-| Overall / internal ablation reference | WCSPELAN + AIFI + SpatialSepC3 | `ablation/DKCSPELAN_AIFI_SpatialSepC3.yaml` |
+| Overall ablation | WCSPELAN + LCGAConvGLU + RepC3 | `ablation/WCSPELAN_LCGAConvGLU_RepC3.yaml` |
+| Overall / internal ablation reference | WCSPELAN + AIFI + SpatialSepC3 | `ablation/WCSPELAN_AIFI_SpatialSepC3.yaml` |
 | Overall ablation | R18 + LCGAConvGLU + SpatialSepC3 | `ablation/ResNet18_LCGAConvGLU_SpatialSepC3.yaml` |
-| Full LCG-DETR / overall / internal ablation | WCSPELAN + LCGAConvGLU + SpatialSepC3 | `ablation/DKCSPELAN_LCGAConvGLU_SpatialSepC3.yaml` |
-| Internal ablation | WCSPELAN + LCGA-FFN + SpatialSepC3 | `lcga_convglu_ablation/DKCSPELAN_LCGA_SpatialSepC3.yaml` |
-| Internal ablation | WCSPELAN + AIFI-ConvGLU + SpatialSepC3 | `lcga_convglu_ablation/DKCSPELAN_AIFI_ConvGLU_SpatialSepC3.yaml` |
-| Backbone comparison | FAT | `rt-detr/rtdetr-C2f-FAT.yaml` |
-| Backbone comparison | LGLB | `rt-detr/rtdetr-C2f-LGLB.yaml` |
-| Backbone comparison | MAC | `rt-detr/rtdetr-C2f-MAC.yaml` |
-| Backbone comparison | LSNet-T | `rt-detr/rtdetr-lsnet.yaml` |
-| Encoder comparison | DPB | `attention_comparison/R18_DPB_RepC3.yaml` |
-| Encoder comparison | TSSA | `attention_comparison/R18_TSSA_RepC3.yaml` |
-| Encoder comparison | MSMHSA | `attention_comparison/R18_MSMHSA_RepC3.yaml` |
-| Encoder comparison | DHSA | `attention_comparison/R18_DHSA_RepC3.yaml` |
+| Full LCG-DETR / overall / internal ablation | WCSPELAN + LCGAConvGLU + SpatialSepC3 | `ablation/WCSPELAN_LCGAConvGLU_SpatialSepC3.yaml` |
+| Internal ablation | WCSPELAN + LCGA-FFN + SpatialSepC3 | `lcga_convglu_ablation/WCSPELAN_LCGA_SpatialSepC3.yaml` |
+| Internal ablation | WCSPELAN + AIFI-ConvGLU + SpatialSepC3 | `lcga_convglu_ablation/WCSPELAN_AIFI_ConvGLU_SpatialSepC3.yaml` |
 
-Historical filenames and the `DKCSPELAN` alias are retained for configuration/checkpoint compatibility. The corresponding backbone is called **WCSPELAN** in the paper.
+Model configuration filenames use **WCSPELAN**, matching the paper. The legacy `DKCSPELAN` name is retained only as a code alias for compatibility with older checkpoints.
 
 YOLOv8/YOLO11/YOLO26 were trained in separate implementations, which are not included here. Literature-reported detectors are also not bundled.
 
 ## Complexity and timing
 
-- `get_all_yaml_param_and_flops.py` estimates complexity for its configured folder. Its default is `ultralytics/cfg/models/rt-detr`; it does not recursively scan all 18 models.
+- `get_all_yaml_param_and_flops.py` recursively scans `ultralytics/cfg/models/` to estimate complexity for all 10 retained configurations.
 - `get_FPS.py` benchmarks a local checkpoint and image source. Fill its `CONFIG` paths before use. Its full `predict()` timing includes interface overhead and differs from the validator's recorded preprocessing/inference/postprocessing time.
 - State input resolution, batch size, precision, device, and fusion status when comparing results. Raw and fused parameter counts differ.
 
 ## Validation scope
 
-Before weights were removed from this source copy, 24 paper-related `best.pt` files covering all 18 configurations and the DUO baseline/full detector passed loading, a 640 x 640 CUDA FP32 forward pass, and the standard `predict()` interface. Identical contents were deduplicated by SHA256.
+Before weights were removed from an earlier, broader source snapshot, 24 paper-related `best.pt` files covering 18 configurations and the DUO baseline/full detector passed loading, a 640 x 640 CUDA FP32 forward pass, and the standard `predict()` interface. Identical contents were deduplicated by SHA256.
 
-Those checks used the existing experiment environment. They were not full retraining, a clean-environment installation, or a new dataset-accuracy evaluation.
+The current release retains 10 baseline, full-detector, and ablation configurations from that snapshot; the 8 backbone and attention comparison YAMLs have been removed. Those checks used the existing experiment environment. They were not full retraining, a clean-environment installation, or a new dataset-accuracy evaluation. This configuration cleanup did not include a new GPU test.
 
 ## License and sources
 
 See [LICENSE](LICENSE), [third-party notices](THIRD_PARTY_NOTICES.md), and [source acknowledgements](docs/SOURCES.md). Upstream license terms and notices apply to the corresponding code. Dataset rights remain with their providers.
 
-Source-code permissions for FTIC, LSNet, CMTFNet, and Histoformer remain unconfirmed. See the notices before publicly redistributing those comparison implementations; the root license does not supply missing upstream permission.
+Source-code permissions for FTIC, LSNet, CMTFNet, and Histoformer remain unconfirmed. Their legacy helper implementations remain in the bundled source. See the notices before publicly redistributing them; the root license does not supply missing upstream permission.
 
 ## Citation and contact
 

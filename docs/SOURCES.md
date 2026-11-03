@@ -1,10 +1,12 @@
 # Method and implementation sources
 
-The retained code includes the full LCG-DETR model, its component ablations, and
-the backbone and encoder comparisons in the manuscript. The following table
-records the corresponding upstream methods. These are detector adaptations;
-the comparison YAML files are not releases of the upstream authors' complete
-compression, segmentation, restoration, or classification systems.
+The release provides 10 YAML configurations for the full LCG-DETR model,
+RT-DETR-R18 baseline, and overall and internal ablations. Backbone and attention
+comparison YAMLs are not included. Their helper implementations and registry
+imports remain in the bundled source, so their attribution and license notices
+are preserved. The table below records the retained implementations and their
+roles in the original paper experiments. These adaptations do not provide the
+upstream authors' complete systems.
 
 | Method | Reference | Upstream source | Role in this repository |
 | --- | --- | --- | --- |
@@ -23,9 +25,9 @@ compression, segmentation, restoration, or classification systems.
 
 `WCSPELAN`, `SpatialSepC3`, the integration of LCGA with reduced-width ConvGLU,
 and the experiment-specific detector configurations are described in the
-LCG-DETR manuscript. The legacy `DKCSPELAN` name is retained as a compatibility
-alias in code and some YAML filenames. It refers to the manuscript's WCSPELAN
-configuration and is not a separate paper method.
+LCG-DETR manuscript. Model configuration filenames use `WCSPELAN`. The legacy
+`DKCSPELAN` name is retained only as a code alias for compatibility with older
+checkpoints; it is not a separate paper method.
 
 ## Attribution scope and unresolved revisions
 
