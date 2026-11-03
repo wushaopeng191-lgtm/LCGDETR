@@ -1,0 +1,6 @@
+train: /home/sr/project/LCGDERT/URPC2020/train/images
+val: /home/sr/project/LCGDERT/URPC2020/valid/images
+test: /home/sr/project/LCGDERT/URPC2020/test/images
+
+nc: 4
+names: ['holothurian', 'echinus', 'scallop', 'starfish']

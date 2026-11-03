@@ -1,0 +1,75 @@
+{
+  "snapshot_date": "2026-11-02",
+  "description": "Image membership only; no images, annotations, or weights.",
+  "path_convention": "Relative to the prepared dataset root; preserve the complete path.",
+  "datasets": {
+    "URPC2020": {
+      "splits": {
+        "train": {
+          "file": "splits/URPC2020/train.txt",
+          "images": 4434,
+          "source_directory": "train",
+          "sha256": "d26c7120dae9c281e327a51656e563912568b74f4339c323db23d6bdeb72d1c6"
+        },
+        "val": {
+          "file": "splits/URPC2020/val.txt",
+          "images": 554,
+          "source_directory": "valid",
+          "sha256": "fab5bb4e9417a7745fe626c55643d31471a6cb341c8dbaf86d510c7eebc74146"
+        },
+        "test": {
+          "file": "splits/URPC2020/test.txt",
+          "images": 555,
+          "source_directory": "test",
+          "sha256": "3b2abfc0ed27e6579e890eba464641cf0dd0037dbd55d4b093a8ace6dd4f3dcb"
+        }
+      },
+      "label_class_order": [
+        "holothurian",
+        "echinus",
+        "scallop",
+        "starfish"
+      ]
+    },
+    "DUO": {
+      "splits": {
+        "train": {
+          "file": "splits/DUO/train.txt",
+          "images": 5336,
+          "source_directory": "train",
+          "sha256": "ae53e373a0b2f01c23eb8c9bbe220a1f005a3a0a563d3b3fa975807d7b34a8a4"
+        },
+        "val": {
+          "file": "splits/DUO/val.txt",
+          "images": 1335,
+          "source_directory": "val",
+          "sha256": "5ad499278900c78fc34e8cc3d9783070f35fcfac4c7586c07d05c40d6899cd68"
+        },
+        "test": {
+          "file": "splits/DUO/test.txt",
+          "images": 1111,
+          "source_directory": "test",
+          "sha256": "b7ba56a235d63d7ff943795e2ebfb976a814ea27069de7c80e4a5107adc3664f"
+        }
+      },
+      "label_class_order": [
+        "holothurian",
+        "echinus",
+        "scallop",
+        "starfish"
+      ],
+      "original_annotations": {
+        "train": {
+          "images": 6671,
+          "sha256": "129a102dc8c09020e762889a961b9f2f9fed8aecaded42ccf85a8e0e0c3129ee"
+        },
+        "test": {
+          "images": 1111,
+          "sha256": "62184dcd98757eb33f5edb52ddef33cb8f252cef330f29f8da5139456616d820"
+        }
+      },
+      "official_test_membership_preserved": true,
+      "official_training_pool_preserved": true
+    }
+  }
+}

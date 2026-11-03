@@ -1,0 +1,6 @@
+train: /home/sr/project/LCGDERT/DUO/train/images
+val: /home/sr/project/LCGDERT/DUO/val/images
+test: /home/sr/project/LCGDERT/DUO/test/images
+
+nc: 4
+names: ['holothurian', 'echinus', 'scallop', 'starfish']

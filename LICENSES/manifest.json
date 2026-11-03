@@ -1,0 +1,61 @@
+{
+  "verified_on": "2026-11-02",
+  "files": [
+    {
+      "path": "LICENSE",
+      "source_url": "https://raw.githubusercontent.com/ultralytics/ultralytics/v8.0.201/LICENSE",
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+      "bytes": 34523
+    },
+    {
+      "path": "LICENSES/TransNeXt-LICENSE.txt",
+      "source_url": "https://raw.githubusercontent.com/DaiShiResearch/TransNeXt/main/LICENSE",
+      "sha256": "516392f7dc9349dc63232960bf47bb0fecf3846eeaf97e56e65d4398410fd709",
+      "bytes": 11348
+    },
+    {
+      "path": "LICENSES/CGA-LICENSE.txt",
+      "source_url": "https://raw.githubusercontent.com/mwaleedaslam/CGA/main/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357
+    },
+    {
+      "path": "LICENSES/Mobile-U-ViT-LICENSE.txt",
+      "source_url": "https://raw.githubusercontent.com/FengheTan9/Mobile-U-ViT/main/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357
+    },
+    {
+      "path": "LICENSES/ToST-LICENSE.txt",
+      "source_url": "https://raw.githubusercontent.com/RobinWu218/ToST/main/LICENSE",
+      "sha256": "5bbe18698770cee98f8a40f4650a2ef3f6305fdce2936041bde93faea05e9e6c",
+      "bytes": 1066
+    },
+    {
+      "path": "LICENSES/Swin-Transformer-LICENSE.txt",
+      "source_url": "https://raw.githubusercontent.com/microsoft/Swin-Transformer/main/LICENSE",
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "bytes": 1141
+    },
+    {
+      "path": "LICENSES/CrossFormer-LICENSE.txt",
+      "source_url": "https://raw.githubusercontent.com/cheerss/CrossFormer/main/LICENSE",
+      "sha256": "a42c7b32fb7598aec96474fff9b54a63ea288fff24af6cf8e30357da247f3ed1",
+      "bytes": 1063
+    },
+    {
+      "path": "LICENSES/HDNet-Apache-2.0.txt",
+      "source_url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    }
+  ],
+  "hdnet_declaration_url": "https://github.com/iLearn-Lab/TGRS25-HDNet#license",
+  "unverified_source_permissions": [
+    "FTIC",
+    "LSNet",
+    "CMTFNet",
+    "Histoformer"
+  ],
+  "scope": "Current public upstream license statements; original adapted source revisions are not fully recorded."
+}

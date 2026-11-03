@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "Please cite the associated LCG-DETR manuscript when using this research implementation."
+type: software
+title: "LCG-DETR research implementation"
+authors:
+  - family-names: Wu
+    given-names: Shaopeng
+  - family-names: Wang
+    given-names: Zefeng
+  - family-names: Cai
+    given-names: Shaobin
+references:
+  - type: unpublished
+    title: "LCG-DETR: Curvature-Guided Attention and Convolutional Gating for Lightweight Underwater Object Detection"
+    authors:
+      - family-names: Wu
+        given-names: Shaopeng
+      - family-names: Wang
+        given-names: Zefeng
+      - family-names: Cai
+        given-names: Shaobin
+
